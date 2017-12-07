@@ -1,2 +1,2 @@
-# adventofcode
-Advent of code solutions
+# Advent of code 2017
+Advent of code 2017 solutions
