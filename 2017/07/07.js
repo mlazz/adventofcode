@@ -68,7 +68,7 @@ var init = input => {
                     };
                 }
             }
-            
+
             weight.push(map[name].weight);
             result.total = weight.length === 1 ? weight[0] : weight.reduce((a, b) => a + b);
 

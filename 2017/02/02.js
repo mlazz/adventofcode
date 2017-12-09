@@ -1,56 +1,59 @@
-
-// DAY 2
-var adventOfCheckSum = function(sheet) {
-    var lines = sheet.split('\n');
-    var sum = 0;
-    
-    for (var i = 0; i < lines.length; i++) {
-        var line = lines[i].split('\t').map(function(l) {
-            return parseInt(l);
+const init = input => {
+    const part1 = input => {
+        let sum = 0;
+        input.split('\n').forEach(line => {
+            line = line.split('\t').map(l => +l);
+            sum += Math.max(...line) - Math.min(...line);
         });
-        var min = Math.min.apply(this, line);
-        var max = Math.max.apply(this, line);
 
-        sum += (max - min);
+        return sum;
     }
 
-    return sum;
-}
+    const part2 = input => {
+        const sum = [];
+        input.split('\n').forEach(line => {
+            line = line.split('\t').map(l => +l);
 
-var adventOfEvenDivideCheckSum = function(sheet) {
-    var lines = sheet.split('\n');
-    var sum = [];
+            line.sort((a, b) => b - a);
 
-    for (var i = 0; i < lines.length; i++) {
-        var line = lines[i].split('\t').map(function(l) {
-            return parseInt(l);
-        })
+            while (line.length) {
+                let result = false;
+                const one = line.shift();
 
-        line.sort(function(a,b) {
-            return b - a;
-        });
+                for (let two of line) {
+                    if (one / two === parseInt(one / two, 10)) {
+                        result = one / two;
+                        break;
+                    }
+                }
 
-        while (line.length) {
-            var result = false;
-            var one = line.shift();
-            for (var j = 0; j < line.length; j++) {
-                var two = line[j];
-
-                if ((one / two) === parseInt(one / two)) {
-                    result = one / two;
+                if (result) {
+                    sum.push(result);
                     break;
                 }
             }
+        });
 
-            if (result) {
-                sum.push(result);
-                break;
-            }
-        }
+        return sum.reduce((a, b) => a + b);
     }
 
-    return sum.reduce(function(a, b) {
-        return a + b;
+    console.log('part1:', part1(input));
+    console.log('part2:', part2(input));
+};
+
+const openFile = (filename, callback) => {
+    const fs = require('fs');
+    fs.readFile(filename, 'utf-8', (err, data) => {
+        if (err) {
+            console.log(err.toString());
+            return;
+        }
+
+        callback && callback(data);
     });
 }
 
+// const file = '2017/02/test1.txt';
+// const file = '2017/02/test2.txt';
+const file = '2017/02/input.txt';
+openFile(file, init);

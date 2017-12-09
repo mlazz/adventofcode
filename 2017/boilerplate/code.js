@@ -1,6 +1,14 @@
 const init = input => {
-    console.log('part1: ');
-    console.log('part2: ');
+    const part1 = input => {
+
+    };
+
+    const part2 = input => {
+
+    };
+
+    console.log('part1:', part1(input));
+    console.log('part2:', part2(input));
 };
 
 const openFile = (filename, callback) => {
@@ -15,6 +23,6 @@ const openFile = (filename, callback) => {
     });
 }
 
-const file = 'test.txt';
-// const file = 'input.txt';
+const file = '2017/__day__/test.txt';
+// const file = '2017/__day__/input.txt';
 openFile(file, init);

@@ -1,34 +1,32 @@
-// DAY 1
-var adventOfSum = function(seq) {
-    var len = seq.length;
-    var sum = 0;
-    for (var i = 0; i < len; i++) {
-        var j = (i == len - 1) ? 0 : i + 1,
-            d1 = seq[i],
-            d2 = seq[j];
+const init = input => {
 
-        if (d1 === d2) {
-            sum += parseInt(d1);
+    input.split('\n').forEach(captcha => {
+        const len = captcha.length,
+            double = captcha + captcha,
+            // step = 1; // part 1
+            step = len / 2; // part 2
+        let sum = 0;
+
+        for (let i = 0; i < len; i++) {
+            sum += (double[i] === double[i + step]) ? +double[i] : 0;
         }
-    }
+        console.log('captcha solution:', sum);
+    });
+};
 
-    return sum;
+const openFile = (filename, callback) => {
+    const fs = require('fs');
+    fs.readFile(filename, 'utf-8', (err, data) => {
+        if (err) {
+            console.log(err.toString());
+            return;
+        }
+
+        callback && callback(data);
+    });
 }
 
-var adventOfSumHalfway = function(seq) {
-    var len = seq.length,
-        newSeq = seq + seq,
-        sum = 0,
-        step = len / 2;
-
-    for (var i = 0; i < len; i++) {
-        var d1 = newSeq[i],
-            d2 = newSeq[i + step];
-
-        if (d1 === d2) {
-            sum += parseInt(d1);
-        }
-    }
-
-    return sum;
-}
+// const file = '2017/01/test1.txt';
+// const file = '2017/01/test2.txt';
+const file = '2017/01/input.txt';
+openFile(file, init);
