@@ -39,4 +39,4 @@ For example:
 
 Your puzzle answer was **1166**.
 
-**_Both parts of this puzzle are complete! They provide two gold stars: ** _**
+___Both parts of this puzzle are complete! They provide two gold stars: ** ___
