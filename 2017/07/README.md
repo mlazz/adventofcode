@@ -1,4 +1,4 @@
-# --- Day 7: Recursive Circus ---
+### --- Day 7: Recursive Circus ---
 
 Wandering further through the circuits of the computer, you come upon a tower of programs that have gotten themselves into a bit of trouble. A recursive algorithm has gotten out of hand, and now they're balanced precariously in a large tower.
 
@@ -58,9 +58,9 @@ In the example above, this means that for `ugml`'s disc to be balanced, `gyxo`, 
 
 However, for `tknk` to be balanced, each of the programs standing on its disc **and all programs above it** must each match. This means that the following sums must all be the same:
 
-`ugml` + (`gyxo` + `ebii` + `jptl`) = 68 + (61 + 61 + 61) = 251
-`padx` + (`pbga` + `havc` + `qoyq`) = 45 + (66 + 66 + 66) = 243
-`fwft` + (`ktlj` + `cntj` + `xhth`) = 72 + (57 + 57 + 57) = 243
+- `ugml` + (`gyxo` + `ebii` + `jptl`) = 68 + (61 + 61 + 61) = 251
+- `padx` + (`pbga` + `havc` + `qoyq`) = 45 + (66 + 66 + 66) = 243
+- `fwft` + (`ktlj` + `cntj` + `xhth`) = 72 + (57 + 57 + 57) = 243
 
 As you can see, `tknk`'s disc is unbalanced: `ugml`'s stack is heavier than the other two. Even though the nodes above `ugml` are balanced, `ugml` itself is too heavy: it needs to be `8` units lighter for its stack to weigh `243` and keep the towers balanced. If this change were made, its weight would be `60`.
 
