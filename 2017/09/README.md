@@ -1,4 +1,4 @@
-# --- Day 9: Stream Processing ---
+### --- Day 9: Stream Processing ---
 
 A large stream blocks your path. According to the locals, it's not safe to cross the stream at the moment because it's full of **garbage**. You look down at the stream; rather than water, you discover that it's a **stream of characters**.
 
@@ -46,7 +46,7 @@ Your goal is to find the total score for all groups in your input. Each group is
 
 Your puzzle answer was _14204_.
 
-# --- Part Two ---
+### --- Part Two ---
 
 Now, you're ready to remove the garbage.
 
@@ -64,4 +64,4 @@ To prove you've removed it, you need to count all of the characters within the g
 
 Your puzzle answer was _6622_.
 
-***Both parts of this puzzle are complete! They provide two gold stars: ** ***
+___Both parts of this puzzle are complete! They provide two gold stars: \*\*___
