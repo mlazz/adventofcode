@@ -18,23 +18,30 @@ else
     DAY=$SIMPLEDAY
 fi
 
-if [ -d "$DAY" ]; then
+YEAR=$2
+if [ -z "$YEAR" ]; then
+    YEAR=2018
+fi
+
+if [ -d "$YEAR/$DAY" ]; then
     echo "Day $DAY already created. Exiting..."
     exit 3
 fi
 
-cp -r "boilerplate" "$DAY"
-mv "$DAY/code.js" "$DAY/$DAY.js"
-echo "Copied project boilerplate to $DAY."
+cp -r "boilerplate" "$YEAR/$DAY"
+mv "$YEAR/$DAY/code.js" "$YEAR/$DAY/$DAY.js"
+echo "Copied project boilerplate to $YEAR/$DAY."
 
 echo -n "Requesting input for day $DAY... "
-curl --cookie "session=$COOKIE" "https://adventofcode.com/2017/day/$SIMPLEDAY/input" -o "$DAY/input.txt"
+curl --cookie "session=$COOKIE" "https://adventofcode.com/$YEAR/day/$SIMPLEDAY/input" -o "$YEAR/$DAY/input.txt"
 
 
-if [ -f "$DAY/input.txt" ]; then
+if [ -f "$YEAR/$DAY/input.txt" ]; then
     echo "Input file created."
 else
     echo "Error requesting input for day $DAY."
+    rm -rf $YEAR/$DAY
+    echo "Removed $YEAR/$DAY folder..."
     exit 4
 fi
 

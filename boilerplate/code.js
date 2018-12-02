@@ -23,6 +23,6 @@ const openFile = (filename, callback) => {
     });
 }
 
-const file = '2017/__day__/test.txt';
-// const file = '2017/__day__/input.txt';
+const file = '__year__/__day__/test.txt';
+// const file = '__year__/__day__/input.txt';
 openFile(file, init);
