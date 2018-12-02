@@ -29,7 +29,6 @@ if [ -d "$YEAR/$DAY" ]; then
 fi
 
 cp -r "boilerplate" "$YEAR/$DAY"
-mv "$YEAR/$DAY/code.js" "$YEAR/$DAY/$DAY.js"
 echo "Copied project boilerplate to $YEAR/$DAY."
 
 echo -n "Requesting input for day $DAY... "
