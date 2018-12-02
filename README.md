@@ -1,2 +1,3 @@
-# Advent of code 2017
-Advent of code 2017 solutions
+# Advent of code solutions
+
+Master repository for my AoC puzzle solutions.
