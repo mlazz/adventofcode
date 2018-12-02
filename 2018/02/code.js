@@ -5,37 +5,29 @@ const inputFile = {
 };
 
 const part1 = parsedInput => {
-    const mapped = parsedInput.map(l => {
+    let doubles = 0;
+    let triples = 0;
+
+    parsedInput.forEach(l => {
         const letters = {};
-        let doubles = false;
-        let triples = false;
 
         l.split('').forEach(letter => {
-            if (!letters[letter]) {
-                letters[letter] = 1;
-            }
-            else {
-                letters[letter] += 1;
-            }
+            letters[letter] = letters[letter] ? letters[letter] + 1 : 1;
         });
 
+        let hasDoubles = false,
+            hasTriples = false;
         Object.keys(letters).forEach(l => {
             const count = letters[l];
-            if (count === 2) { doubles = true; }
-            if (count === 3) { triples = true; }
+            if (count === 2) { hasDoubles = true; }
+            if (count === 3) { hasTriples = true; }
         });
 
-        return { doubles, triples };
+        if (hasDoubles) { doubles++; }
+        if (hasTriples) { triples++; }
     });
 
-    const checksum = mapped.reduce((a, b) => {
-        let sumDoubles = (a.doubles || 0) + (b.doubles || 0);
-        let sumTriples = (a.triples || 0) + (b.triples || 0);
-
-        return { doubles: sumDoubles, triples: sumTriples };
-    }, { doubles: 0, tribles: 0 });
-
-    return checksum.doubles * checksum.triples;
+    return doubles * triples;
 };
 
 const part2 = parsedInput => {
