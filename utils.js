@@ -1,20 +1,23 @@
 const splitLines = (input, toInt) => {
     const lines = input.split('\n');
 
-    return toInt ? lines.map(i => +i) : lines;
+    return toInt ? lines.map(Number) : lines;
 };
 
-const parseInput = (inputFile) => {
+const parseInput = (filename) => {
     const fs = require('fs');
-    const file = inputFile.filename + '.' + inputFile.ext;
-    const filePath = fs.existsSync(file) ? file : process.env.YEAR + '/' + process.env.DAY + '/' + file;
+    const filePath = fs.existsSync(filename)
+                        ? filename
+                        : process.env.YEAR + '/' + process.env.DAY + '/' + filename;
+
     const data = fs.readFileSync(filePath, 'utf-8');
 
-    return splitLines(data, inputFile.intValues);
+    return splitLines(data, process.env.INTVAL);
 };
 
-const run = (inputFile, solutions) => {
-    const parsedInput = parseInput(inputFile);
+const run = solutions => {
+    const filename = process.env.INPUT || 'input.txt';
+    const parsedInput = parseInput(filename);
 
     Object.keys(solutions).forEach(part => {
         const fn = solutions[part];

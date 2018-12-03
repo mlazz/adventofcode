@@ -1,8 +1,4 @@
 const { run } = require('../../utils');
-const inputFile = {
-    filename: process.env.INPUT || 'input',
-    ext: 'txt'
-};
 
 const part1 = parsedInput => {
     let doubles = 0;
@@ -65,7 +61,4 @@ const part2 = parsedInput => {
     return result.join('');
 };
 
-run(inputFile, {
-    part1,
-    part2
-});
+run({ part1, part2 });
