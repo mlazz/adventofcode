@@ -1,6 +1,10 @@
 const splitLines = input => {
     const lines = input.split('\n');
 
+    if (process.env.RAW) {
+        return lines;
+    }
+
     // usually input is either integers or string - try to automagically parse integers
     return isNaN(Number(lines[0])) ? lines : lines.map(Number);
 };
