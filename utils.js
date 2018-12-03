@@ -1,7 +1,8 @@
-const splitLines = (input, toInt) => {
+const splitLines = input => {
     const lines = input.split('\n');
 
-    return toInt ? lines.map(Number) : lines;
+    // usually input is either integers or string - try to automagically parse integers
+    return isNaN(Number(lines[0])) ? lines : lines.map(Number);
 };
 
 const parseInput = (filename) => {
@@ -12,7 +13,7 @@ const parseInput = (filename) => {
 
     const data = fs.readFileSync(filePath, 'utf-8');
 
-    return splitLines(data, process.env.INTVAL);
+    return splitLines(data);
 };
 
 const run = solutions => {
@@ -21,8 +22,12 @@ const run = solutions => {
 
     Object.keys(solutions).forEach(part => {
         const fn = solutions[part];
+        const start = +new Date();
+
         const answer = typeof fn === 'function' && fn(parsedInput);
-        answer && console.log(`${part}:`, answer);
+        if (answer) {
+            console.log(`${part}: ${answer} (duration: ${(+new Date() - start)} ms)`);
+        }
     });
 };
 

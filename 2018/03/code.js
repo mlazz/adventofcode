@@ -12,10 +12,9 @@ const part1 = parsedInput => {
 
         for (let t = top + 1; t <= (top + height); t++) {
             for (let l = left + 1; l <= (left + width); l++) {
-                if (!used[`${l}-${t}`]) {
-                    used[`${l}-${t}`] = [];
-                }
-                used[`${l}-${t}`].push({ full, id, left, top, width, height });
+                const loc = `${l}-${t}`;
+                if (!used[loc]) { used[loc] = []; }
+                used[loc].push({ full, id, left, top, width, height });
             }
         }
     });
