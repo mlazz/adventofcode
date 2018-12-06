@@ -1,5 +1,5 @@
 const splitLines = input => {
-    const lines = input.split('\n');
+    const lines = input.match('\n', 'g') !== null ? input.split('\n') : input;
 
     if (process.env.RAW) {
         return lines;
@@ -17,7 +17,7 @@ const parseInput = (filename) => {
 
     const data = fs.readFileSync(filePath, 'utf-8');
 
-    return splitLines(data);
+    return splitLines(data.trim());
 };
 
 const run = solutions => {
