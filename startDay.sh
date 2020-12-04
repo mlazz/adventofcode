@@ -31,6 +31,8 @@ fi
 cp -r "boilerplate" "$YEAR/$DAY"
 echo "Copied project boilerplate to $YEAR/$DAY."
 
+echo -e "module.exports = {\n\tday: '$DAY',\n\tyear: '$YEAR'\n};" > "$YEAR/$DAY/env.js"
+
 echo -n "Requesting input for day $DAY... "
 curl --cookie "session=$COOKIE" "https://adventofcode.com/$YEAR/day/$SIMPLEDAY/input" -o "$YEAR/$DAY/input.txt"
 
