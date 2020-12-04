@@ -3,11 +3,11 @@ const { day, year } = require('env');
 const useTestFile = true;
 const useRawInput = false;
 
-const part1 = parsedInput => {
+const part1 = input => {
 
 };
 
-const part2 = parsedInput => {
+const part2 = input => {
 
 };
 
