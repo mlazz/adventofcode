@@ -1,5 +1,5 @@
 const { run } = require('../../utils');
-const { day, year } = require('env');
+const { day, year } = require('./env');
 const useTestFile = true;
 const useRawInput = false;
 
