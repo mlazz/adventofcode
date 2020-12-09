@@ -23,15 +23,12 @@ const getAllAvailableSums = arr => {
 };
 
 const evaluateCypher = (input, preambleLength) => {
-    const list = [...input]; // clone input value
-
-
     let i = preambleLength;
-    while (i < list.length) {
+    while (i < input.length) {
         const preamble = [...input].splice(i - preambleLength, preambleLength);
         const sums = getAllAvailableSums(preamble);
-        if (!sums.includes(list[i])) {
-            return list[i];
+        if (!sums.includes(input[i])) {
+            return input[i];
         }
 
         i++;
