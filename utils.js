@@ -15,8 +15,8 @@ const splitLines = (input, useRawInput) => {
     return isNaN(Number(lines[0])) ? lines : lines.map(Number);
 };
 
-const parseInput = ({ day, year, useTestFile, useRawInput }) => {
-    const filename = useTestFile ? 'test.txt' : 'input.txt';
+const parseInput = ({ day, year, testFile, useRawInput }) => {
+    const filename = testFile || 'input.txt';
     const filePath = fs.existsSync(filename) ? filename : `${year}/${day}/${filename}`;
 
     const data = fs.readFileSync(filePath, 'utf-8');
@@ -24,18 +24,14 @@ const parseInput = ({ day, year, useTestFile, useRawInput }) => {
     return splitLines(data.trim(), useRawInput);
 };
 
-const run = (solutions, config) => {
+const run = (fn, name, config) => {
     const parsedInput = parseInput(config);
+    const start = +new Date();
 
-    Object.keys(solutions).forEach(part => {
-        const fn = solutions[part];
-        const start = +new Date();
-
-        const answer = typeof fn === 'function' && fn(parsedInput);
-        if (answer) {
-            console.log(`${part}: ${answer} (duration: ${(+new Date() - start)} ms)`);
-        }
-    });
+    const answer = typeof fn === 'function' && fn(parsedInput);
+    if (answer) {
+        console.log(`${name}: ${answer} (duration: ${(+new Date() - start)} ms)`);
+    }
 };
 
 module.exports = {

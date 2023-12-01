@@ -1,14 +1,24 @@
 const { run } = require('../../utils');
 const { day, year } = require('./env');
-const useTestFile = true;
-const useRawInput = false;
 
-const part1 = input => {
-
-};
-
-const part2 = input => {
+// Part 1
+const solution1 = input => {
 
 };
+run(solution1, 'Solution 1', {
+    day,
+    year,
+    testFile: 'test1.txt',
+    // useRawInput: true
+});
 
-run({ part1, part2 }, { day, year, useTestFile, useRawInput});
+// // Part 2
+// const solution2 = input => {
+
+// };
+// run(solution2, 'Solution 2', {
+//     day,
+//     year,
+//     testFile: 'test2.txt',
+//     // useRawInput: true
+// });

@@ -20,7 +20,7 @@ fi
 
 YEAR=$2
 if [ -z "$YEAR" ]; then
-    YEAR=2020
+    YEAR=2023
 fi
 
 if [ -d "$YEAR/$DAY" ]; then
